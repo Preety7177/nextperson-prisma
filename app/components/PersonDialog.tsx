@@ -38,6 +38,17 @@ const PersonDialog: React.FC<PersonDialogProps> = ({ open, handleClose, currentP
         value={currentPerson?.phone || ''}
         onChange={e => setCurrentPerson(prev => ({ ...prev!, phone: e.target.value }))}
       />
+      <TextField
+        margin="dense"
+        label="Date of Birth"
+        fullWidth
+        type="date"
+        value={currentPerson?.dob?.toISOString().substring(0, 10) || ''}
+        onChange={e => setCurrentPerson(prev => ({ ...prev!, dob: new Date(e.target.value) }))}
+        InputLabelProps={{
+          shrink: true,
+        }}
+      />
     </DialogContent>
     <DialogActions>
       <Button onClick={handleClose} color="primary">
