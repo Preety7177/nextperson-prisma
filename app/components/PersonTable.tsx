@@ -28,7 +28,7 @@ const PersonTable: React.FC<PersonTableProps> = ({ people, handleOpen, handleDel
             <TableCell>{person.firstname}</TableCell>
             <TableCell>{person.lastname}</TableCell>
             <TableCell>{person.phone}</TableCell>
-            <TableCell>{person.dob instanceof Date ? person.dob.toLocaleDateString() : person.dob}</TableCell>
+            <TableCell>{new Date(person.dob).toLocaleDateString()}</TableCell>
             <TableCell>
               <Button onClick={() => handleOpen(person)}>Edit</Button>
               <Button onClick={() => handleDelete(person.id)}>Delete</Button>

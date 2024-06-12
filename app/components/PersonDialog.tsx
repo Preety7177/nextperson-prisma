@@ -1,5 +1,3 @@
-//'use client'
-
 import React from 'react';
 import { Dialog, DialogActions, DialogContent, DialogTitle, TextField, Button } from '@mui/material';
 import { Person } from '../lib/person';
@@ -38,15 +36,16 @@ const PersonDialog: React.FC<PersonDialogProps> = ({ open, handleClose, currentP
         value={currentPerson?.phone || ''}
         onChange={e => setCurrentPerson(prev => ({ ...prev!, phone: e.target.value }))}
       />
+      {/* Add a TextField for the date */}
       <TextField
         margin="dense"
         label="Date of Birth"
+        type="date" // Set the input type to 'date'
         fullWidth
-        type="date"
-        value={currentPerson?.dob?.toISOString().substring(0, 10) || ''}
-        onChange={e => setCurrentPerson(prev => ({ ...prev!, dob: new Date(e.target.value) }))}
+        value={currentPerson?.dob || ''}
+        onChange={e => setCurrentPerson(prev => ({ ...prev!, dob: e.target.value }))}
         InputLabelProps={{
-          shrink: true,
+          shrink: true, // To shrink the label when value is present
         }}
       />
     </DialogContent>
