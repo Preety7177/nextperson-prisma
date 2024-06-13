@@ -1,3 +1,4 @@
+// person.ts
 export interface Person {
     id: number;
     firstname: string;
