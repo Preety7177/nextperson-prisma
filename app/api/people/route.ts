@@ -1,7 +1,11 @@
 import { PrismaClient } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({datasources: {
+    db: {
+      url: process.env.NEXT_PUBLIC_DATABASE_URL,
+    }
+  }});
 
 export async function GET(req: NextRequest, res: NextResponse) {
     const people = await prisma.person.findMany();
